@@ -62,6 +62,7 @@ const getDate = (format = null, date = null) => {
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('assets');
+  eleventyConfig.addPassthroughCopy('CNAME');
 
   eleventyConfig.addFilter("typeOf", (val) => {
     return typeof val;
