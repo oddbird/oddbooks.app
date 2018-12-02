@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+
+    <title>{{ renderData.title or title or site.title }}</title>
+    <meta name="description"
+      content="{{ site.description or page.description }}" />
+
+    {% include 'site/og.njk' %}
+
+		{% for url in site.styles %}
+			<link rel="stylesheet"
+				href="/assets/css/{{ url }}" />
+		{% endfor %}
+
+		<script src="https://use.typekit.net/slx1xnq.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	</head>
+
+	<body>
+		{% block body %}
+			{{ content | safe }}
+		{% endblock %}
+
+		<footer>
+			© {% getDate 'year' %}
+			<a href="mailto:{{ site.email }}">
+				{{ site.author }}
+			</a>
+		</footer>
+
+		<!-- Current page: {{ page.url | url }} -->
+	</body>
+</html>
