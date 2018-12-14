@@ -6,6 +6,9 @@
 /// @link http://oddbird.net/accoutrement-color/docs/
 ///   Accoutrement Colors
 
+@include register-function('lighten');
+@include register-function('saturate');
+@include register-function('desaturate');
 
 // Brand Colors
 // ------------
@@ -38,8 +41,8 @@ $contrast-colors: (
   'gray-dark': '#_contrast-dark' ('tint': 25%),
   'gray': '#_contrast-dark' ('tint': 30%),
   'gray-light': '#gray' ('tint': 50%),
-  '_contrast-light': hsl(220, 100%, 99%),
-  '_contrast-dark': '#brand-blue' ('shade': 50%),
+  'contrast-light': hsl(220, 100%, 99%),
+  'contrast-dark': '#brand-blue' ('shade': 50% '_contrast-dark'),
 );
 
 @include add-colors($contrast-colors);
@@ -53,7 +56,7 @@ $contrast-colors: (
 /// @type Map
 $diff-colors: (
   'added-dark': hsl(130, 25%, 32%),
-  'added-light':  'added-dark' ('saturate': 15%, 'lighten': 57%),
+  'added-light':  '#added-dark' ('saturate': 15%, 'lighten': 57%),
 
   'changed-dark': '#brand-blue' ('desaturate': 20%, 'lighten': 5%),
   'changed-light': '#brand-blue' ('saturate': 48%, 'lighten': 63%),
@@ -98,12 +101,11 @@ $light-colors: (
 // -------------
 /// Inverted theme colors will be set as relative CSS variables –
 /// applying the above colors to more specific use-cases.
-/// **This map should not include any color-adjustments,
-/// and will not be available in the global `$colors` map.**
+/// **This map will not be available in the global `$colors` map.**
 /// @group color
 /// @colors
 /// @type Map
-$dark-colors: (
+$dark-colors: map-merge($colors, (
   'background': '#contrast-dark',
   'text': '#contrast-light',
   'text-light': '#gray-light',
@@ -119,6 +121,4 @@ $dark-colors: (
   'changed-bg': '#changed-dark',
   'removed-fg': '#removed-light',
   'removed-bg': '#removed-dark',
-);
-
-@include add-colors($dark-colors);
+));

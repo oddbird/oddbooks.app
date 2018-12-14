@@ -1,0 +1,30 @@
+// Type
+// ====
+
+:root {
+  @include font-family('body');
+  font-size: size('responsive');
+}
+
+h1,
+h2,
+h3 {
+  @include font-family('alt');
+  margin: 1em 0 0.5em;
+}
+
+h1 {
+  font-size: size('xlarge');
+}
+
+h2 {
+  font-size: size('large');
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.is-hidden {
+  @include is-hidden;
+}

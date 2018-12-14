@@ -1,0 +1,48 @@
+// Grid
+// ====
+
+[data-layout='grid'] {
+  display: grid;
+  grid-gap: size('spacer') size('gutter');
+  grid-template: 'banner graphic' auto
+                 'main   graphic' 1fr
+                 'footer graphic' auto
+               / minmax(0, 1fr) 0;
+  justify-items: center;
+  min-height: 100vh;
+  padding: size('gutter');
+
+  @include above('page-break') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+[data-layout="banner"],
+[data-layout="main"],
+[data-layout="footer"] {
+  width: 100%;
+  max-width: size('page');
+}
+
+[data-layout="banner"] {
+  grid-area: banner;
+}
+
+[data-layout="main"] {
+  grid-area: main;
+}
+
+[data-layout="graphic"] {
+  background-image: radial-gradient(
+    circle at 0 50%,
+    var-color('changed-bg'),
+    transparent
+  );
+  grid-area: graphic;
+  justify-self: stretch;
+  margin: negative('gutter') negative('gutter') negative('gutter') 0;
+}
+
+[data-layout="footer"] {
+  grid-area: footer;
+}

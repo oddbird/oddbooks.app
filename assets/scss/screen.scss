@@ -2,56 +2,6 @@
 // ======
 
 @import 'config/manifest';
-@import '../../node_modules/accoutrement/sass/init';
-
-@include global-box-sizing;
-
-body {
-  @include font-family('body');
-  display: grid;
-  font-size: size('responsive');
-  grid-gap: 1em;
-  grid-template-columns: minmax(0, size('page'));
-  grid-template-rows: 1fr auto;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 0 1em;
-}
-
-h1,
-h2,
-h3 {
-  margin: 1em 0 0.5em;
-}
-
-h1 {
-  font-size: size('large');
-}
-
-p {
-  margin-bottom: 1em;
-}
-
-.mc-field-group {
-  margin-bottom: 0.5em;
-}
-
-[type='text'],
-[type='email'] {
-  border: 1px solid;
-}
-
-[type='submit'] {
-  border: 1px solid;
-  border-radius: 0.25em;
-  padding: 0.25em 1em;
-}
-
-.is-hidden {
-  @include is-hidden;
-}
-
-footer {
-  border-top: 1px solid;
-  padding: 1em 0;
-}
+@import 'initial/manifest';
+@import 'layout/manifest';
+@import 'patterns/manifest';

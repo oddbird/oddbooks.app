@@ -1,0 +1,14 @@
+// Banner
+// ======
+
+[data-icon='logo'] {
+  width: 14em;
+}
+
+[data-logo='odd'] {
+  fill: var-color('action-bright');
+}
+
+[data-logo='books'] {
+  fill: var-color('action');
+}

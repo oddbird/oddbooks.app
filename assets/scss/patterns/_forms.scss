@@ -1,0 +1,22 @@
+// Forms
+// =====
+
+[data-field] {
+  margin-bottom: 0.5em;
+}
+
+
+// Inputs
+// ------
+
+[type='text'],
+[type='email'] {
+  border: 1px solid;
+}
+
+[type='submit'] {
+  border: 1px solid;
+  border-radius: 0.25em;
+  padding: 0.25em 1em;
+}
+

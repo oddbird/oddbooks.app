@@ -1,5 +1,7 @@
+{%- import 'utility.macros.njk' as utility -%}
 <!doctype html>
-<html lang="en">
+<html lang="en"
+	data-theme="{{ theme or 'light' }}">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport"
@@ -20,12 +22,21 @@
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 	</head>
 
-	<body>
+	<body data-layout="grid">
+		{% include "site/banner.njk" %}
+
 		{% block body %}
+		<main data-layout="main"
+			{{ utility.attr_if('class', templateClass) }}>
 			{{ content | safe }}
+		</main>
 		{% endblock %}
 
-		<footer>
+		<aside data-layout="graphic"
+			data-theme="dark">
+		</aside>
+
+		<footer data-layout="footer">
 			© {% getDate 'year' %}
 			<a href="mailto:{{ site.email }}">
 				{{ site.author }}
