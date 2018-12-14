@@ -43,7 +43,7 @@ $spacing-sizes: (
   'rhythm': '#root' ('text-ratio': 1, 'convert-units': 'rem'),
   'gutter': '#rhythm',
   'double-gutter': '#gutter' ('times': 2),
-  'spacer': '#gutter' ('times': 4),
+  'spacer': calc(%s + %s) ('%s': '#double-gutter' 4vmin),
   'shim': '#gutter' ('times': 0.5),
   'half-shim': '#shim' ('times': 0.5),
   'quarter-shim': '#shim' ('times': 0.25),

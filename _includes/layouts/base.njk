@@ -32,8 +32,10 @@
 		</main>
 		{% endblock %}
 
-		<aside data-layout="graphic"
-			data-theme="dark">
+		{% block extra %}{% endblock %}
+
+		<aside data-layout="graphic">
+			{% include "site/graphic.svg" %}
 		</aside>
 
 		<footer data-layout="footer">
@@ -41,8 +43,27 @@
 			<a href="mailto:{{ site.email }}">
 				{{ site.author }}
 			</a>
+
+			<button class="toggle-theme">
+				invert
+			</button>
 		</footer>
 
 		<!-- Current page: {{ page.url | url }} -->
+
+		<script>
+			const toggle = document.querySelector(".toggle-theme");
+			const theme = document.querySelector("html");
+			const attr = "data-theme";
+			const opts = {
+				"light": "dark",
+				"dark": "light",
+			}
+
+			toggle.addEventListener("click", () => {
+				const current = theme.getAttribute(attr);
+				theme.setAttribute(attr, opts[current]);
+			});
+		</script>
 	</body>
 </html>

@@ -1,0 +1,25 @@
+// More
+// ====
+
+[data-layout='more'] {
+  @include above('page-break') {
+    display: flex;
+    justify-content: space-between;
+    max-width: size('page', ('times': 2.5));
+  }
+}
+
+.more {
+  background-color: var-color('background');
+
+  @include above('page-break') {
+    border-top: size('quarter-shim') solid var-color('border');
+    padding: var(--margin);
+    flex: 0 1 20em;
+
+    h3,
+    p {
+      margin: 0;
+    }
+  }
+}

@@ -2,23 +2,41 @@
 // ====
 
 [data-layout='grid'] {
+  --margin: #{size('shim')};
+  --bleed: calc(0 * 1px - var(--margin, #{size('shim')}));
   display: grid;
-  grid-gap: size('spacer') size('gutter');
+  grid-gap: var(--margin);
   grid-template: 'banner graphic' auto
                  'main   graphic' 1fr
-                 'footer graphic' auto
+                 'more   more' auto
+                 'footer nope' auto
                / minmax(0, size('page')) minmax(0, 1fr);
   justify-items: center;
   min-height: 100vh;
-  padding: size('gutter');
+  padding: var(--margin);
 
   @include above('page-break') {
     grid-template-columns: minmax(size('page'), 1fr) minmax(0, 1fr);
+    --margin: #{size('gutter')};
+  }
+
+  @include before('') {
+    background-color: var-color('graphic-dark');
+    background-image: radial-gradient(
+      circle at 0 50vh,
+      var-color('graphic-light'),
+      var-color('graphic-dark')
+    );
+    display: block;
+    grid-area: 1 / graphic / -1;
+    justify-self: stretch;
+    margin: var(--bleed) var(--bleed) var(--bleed) 0;
   }
 }
 
 [data-layout="banner"],
 [data-layout="main"],
+[data-layout="more"],
 [data-layout="footer"] {
   width: 100%;
   max-width: size('page');
@@ -29,20 +47,36 @@
 }
 
 [data-layout="main"] {
+  align-self: center;
   grid-area: main;
+  padding: size('spacer') size('gutter') size('spacer') 0;
+}
+
+[data-layout="more"] {
+  grid-area: more / 1;
+  padding-right: size('gutter');
+
+  @include above('page-break') {
+    grid-area: more;
+    padding-right: 0;
+  }
 }
 
 [data-layout="graphic"] {
-  background-image: radial-gradient(
-    circle at 0 50vh,
-    var-color('changed-bg'),
-    transparent
-  );
+  align-items: center;
+  display: flex;
   grid-area: graphic;
-  justify-self: stretch;
-  margin: negative('gutter') negative('gutter') negative('gutter') 0;
+  justify-self: start;
+  margin-left: var(--bleed);
+  overflow: hidden;
+  width: calc(100% + var(--margin));
+
+  @include above('page-break') {
+    min-height: 90vh;
+  }
 }
 
 [data-layout="footer"] {
   grid-area: footer;
+  margin-top: size('spacer');
 }

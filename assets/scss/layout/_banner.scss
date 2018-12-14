@@ -2,11 +2,11 @@
 // ======
 
 [data-icon='logo'] {
-  width: 10em;
+  width: calc(8em + 1vw);
 }
 
 [data-logo='odd'] {
-  fill: var-color('action-bright');
+  fill: var-color('action-hover');
 }
 
 [data-logo='books'] {

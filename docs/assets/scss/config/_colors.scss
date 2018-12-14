@@ -18,9 +18,9 @@
 /// @colors
 /// @type Map
 $brand-colors: (
-  'brand-blue': hsl(195, 52%, 31%),
-  'brand-orange': hsl(24, 100%, 62%),
-  'brand-pink': hsl(330, 100%, 45%),
+  '_brand-blue': hsl(195, 52%, 31%),
+  '_brand-orange': hsl(24, 100%, 62%),
+  '_brand-pink': hsl(330, 100%, 45%),
 );
 
 @include add-colors($brand-colors);
@@ -34,15 +34,15 @@ $brand-colors: (
 /// @colors
 /// @type Map
 $contrast-colors: (
-  'blue-light': '#brand-blue' ('lighten': 22%),
-  'blue-dark': '#brand-blue' ('shade': 25%),
-  'pink-light': '#brand-pink' ('lighten': 22%),
-  'pink-dark': '#brand-pink' ('shade': 25%),
+  'blue-light': '#_brand-blue' ('lighten': 22%),
+  'blue-dark': '#_brand-blue' ('shade': 25%),
+  'pink-light': '#_brand-pink' ('lighten': 22%),
+  'pink-dark': '#_brand-pink' ('shade': 25%),
   'gray-dark': '#_contrast-dark' ('tint': 25%),
   'gray': '#_contrast-dark' ('tint': 30%),
   'gray-light': '#gray' ('tint': 50%),
   'contrast-light': hsl(220, 100%, 99%),
-  'contrast-dark': '#brand-blue' ('shade': 50% '_contrast-dark'),
+  'contrast-dark': '#_brand-blue' ('shade': 50% '_contrast-dark'),
 );
 
 @include add-colors($contrast-colors);
@@ -58,8 +58,8 @@ $diff-colors: (
   'added-dark': hsl(130, 25%, 32%),
   'added-light':  '#added-dark' ('saturate': 15%, 'lighten': 57%),
 
-  'changed-dark': '#brand-blue' ('desaturate': 20%, 'lighten': 5%),
-  'changed-light': '#brand-blue' ('saturate': 48%, 'lighten': 63%),
+  'changed-dark': '#_brand-blue' ('desaturate': 20%, 'lighten': 5%),
+  'changed-light': '#_brand-blue' ('saturate': 48%, 'lighten': 63%),
 
   'removed-dark': hsl(281, 25%, 54%),
   'removed-light': '#removed-dark' ('saturate': 6%, 'lighten': 25%),
@@ -76,15 +76,17 @@ $diff-colors: (
 /// @group color
 /// @colors
 /// @type Map
-$light-colors: (
+$light-theme: (
   'background': '#contrast-light',
   'text': '#contrast-dark',
   'text-light': '#gray-dark',
   'border': '#gray',
   'border-light': '#gray-light',
-  'action': '#brand-blue',
+  'action': '#_brand-blue',
   'action-hover': '#pink-dark',
-  'action-bright': '#brand-pink',
+  'action-bright': '#_brand-pink',
+  'graphic-light': '#blue-light',
+  'graphic-dark': '#blue-dark',
 
   'added-fg': '#added-dark',
   'added-bg': '#added-light',
@@ -94,26 +96,28 @@ $light-colors: (
   'removed-bg': '#removed-light',
 );
 
-@include add-colors($light-colors);
+@include add-colors($light-theme);
 
 
-// Dark Colors
-// -------------
+// Dark Theme
+// ----------
 /// Inverted theme colors will be set as relative CSS variables –
 /// applying the above colors to more specific use-cases.
 /// **This map will not be available in the global `$colors` map.**
 /// @group color
 /// @colors
 /// @type Map
-$dark-colors: map-merge($colors, (
+$dark-theme: (
   'background': '#contrast-dark',
   'text': '#contrast-light',
   'text-light': '#gray-light',
-  'border': '#gray',
-  'border-light': '#gray-dark',
+  'border': '#gray-light',
+  'border-light': '#gray',
   'action': '#blue-light',
   'action-hover': '#pink-light',
-  'action-bright': '#brand-pink',
+  'action-bright': '#_brand-pink',
+  'graphic-light': '#pink-light',
+  'graphic-dark': '#pink-dark',
 
   'added-fg': '#added-light',
   'added-bg': '#added-dark',
@@ -121,4 +125,6 @@ $dark-colors: map-merge($colors, (
   'changed-bg': '#changed-dark',
   'removed-fg': '#removed-light',
   'removed-bg': '#removed-dark',
-));
+);
+
+$dark-colors: map-merge($colors, $dark-theme);

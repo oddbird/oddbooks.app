@@ -1,0 +1,18 @@
+// Footer
+// ======
+
+[data-layout="footer"] {
+  @include font-family('alt');
+  font-size: size('small');
+  font-weight: bold;
+}
+
+.toggle-theme {
+  @include var-contrasted('action');
+  margin: 0 size('shim');
+  padding: 0 size('shim');
+
+  #{$focus} {
+    @include var-contrasted('action-hover');
+  }
+}

@@ -1,0 +1,55 @@
+// Graphic
+// =======
+
+.graphic {
+  flex: 0 1 40em;
+  min-width: 25em;
+
+  .pencil {
+    fill: var-color('background');
+  }
+
+	.page{
+    fill: var-color('background');
+    stroke: var-color('border-light');
+    stroke-width: 1;
+  }
+
+	.text{
+    opacity: 0.4;
+    fill: var-color('border-light');
+  }
+
+	.dot-1{
+    fill: var-color('removed-fg');
+  }
+
+	.dot-2{
+    fill: var-color('changed-bg');
+  }
+
+	.dot-3{
+    fill: var-color('added-fg');
+  }
+
+	.diff-ins{
+    fill: var-color('added-bg');
+  }
+
+	.dif-mark{
+    fill: var-color('changed-bg');
+  }
+
+	.diff-del{
+    fill: var-color('removed-fg');
+  }
+
+	.tooltip{
+    fill: var-color('action-bright');
+  }
+
+	.tiptext{
+    fill: var-contrast('action-bright');
+  }
+
+}

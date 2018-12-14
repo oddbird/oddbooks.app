@@ -1,0 +1,12 @@
+{% extends "layouts/base.njk" %}
+
+{% block extra %}
+  <div data-layout="more">
+    {% for item in more %}
+      <section class="more">
+        <h3>{{ item.title | md('inline') | safe }}</h3>
+        {{ item.text | md | safe }}
+      </section>
+    {% endfor %}
+  </div>
+{% endblock %}

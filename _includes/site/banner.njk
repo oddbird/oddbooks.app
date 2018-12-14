@@ -1,4 +1,7 @@
 <header data-layout="banner">
-  {% include "site/logo.svg" %}
-  <p class="is-hidden">{{ renderData.title or title or site.title }}</p>
+  <a href="/"
+    rel="home">
+    {% include "site/logo.svg" %}
+    <span class="is-hidden">{{ renderData.title or title or site.title }}</span>
+  </a>
 </header>
