@@ -4,27 +4,64 @@
 :root {
   @include font-family('body');
   font-size: size('responsive');
+  line-height: ratio('text-ratio');
 }
 
 h1,
 h2,
 h3 {
   @include font-family('alt');
-  margin: 1em 0 0.5em;
-}
-
-h1 {
-  font-size: size('xlarge');
 }
 
 h2 {
+  font-size: size('xlarge');
+  line-height: 1.2;
+}
+
+h3 {
   font-size: size('large');
 }
 
 p {
-  margin-bottom: 1em;
+  margin-bottom: size('gutter');
+}
+
+.amp {
+  @include font-family('amp');
+  font-style: italic;
 }
 
 .is-hidden {
   @include is-hidden;
 }
+
+
+// Fancy Title
+// -----------
+
+.fancy-title {
+  display: flex;
+  grid-gap: 0 size('shim');
+  grid-template: 'a1 and b1' auto
+                 'a2 and b2' auto
+               / 1fr auto 1fr;
+  margin-bottom: size('gutter');
+
+  span {
+    display: inline-block;
+    flex: 0 0 auto;
+    font-weight: normal;
+  }
+
+  b {
+    display: block;
+    font-weight: bold;
+  }
+
+  .and {
+    align-self: center;
+    font-size: size('large', ('times': 2.5));
+    padding: 0 size('shim');
+  }
+}
+

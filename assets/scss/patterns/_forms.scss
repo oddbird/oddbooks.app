@@ -1,8 +1,39 @@
 // Forms
 // =====
 
-[data-field] {
-  margin-bottom: 0.5em;
+
+form {
+  @include font-family('alt');
+  margin: size('gutter') 0 size('spacer');
+}
+
+
+// Buttons
+// -------
+
+[type='submit'] {
+  @include var-contrasted('action-bright');
+  font-size: size('xsmall');
+  font-weight: bold;
+  padding: size('shim');
+  text-transform: uppercase;
+
+  #{$focus} {
+    @include var-contrasted('action-hover');
+  }
+}
+
+
+// Labels
+// ------
+
+label {
+  color: color('text-light');
+  display: block;
+  font-size: size('xsmall');
+  font-weight: bold;
+  padding: size('quarter-shim') size('shim');
+  text-transform: uppercase;
 }
 
 
@@ -11,12 +42,30 @@
 
 [type='text'],
 [type='email'] {
-  border: 1px solid;
+  border: 1px solid color('border-light');
+  color: color('action-bright');
+  padding: size('shim');
 }
 
-[type='submit'] {
-  border: 1px solid;
-  border-radius: 0.25em;
-  padding: 0.25em 1em;
+
+// Email Signup
+// ============
+
+.mc-field-group {
+  display: grid;
+  grid-template: 'label label' auto
+                 'input button' auto
+               / minmax(50%, 1fr) auto;
 }
 
+[for='mce-EMAIL'] {
+  grid-area: label;
+}
+
+[id='mce-EMAIL'] {
+  grid-area: input;
+}
+
+[id='mc-embedded-subscribe'] {
+  grid-area: button;
+}

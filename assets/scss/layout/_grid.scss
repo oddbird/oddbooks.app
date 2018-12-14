@@ -7,13 +7,13 @@
   grid-template: 'banner graphic' auto
                  'main   graphic' 1fr
                  'footer graphic' auto
-               / minmax(0, 1fr) 0;
+               / minmax(0, size('page')) minmax(0, 1fr);
   justify-items: center;
   min-height: 100vh;
   padding: size('gutter');
 
   @include above('page-break') {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(size('page'), 1fr) minmax(0, 1fr);
   }
 }
 
@@ -34,7 +34,7 @@
 
 [data-layout="graphic"] {
   background-image: radial-gradient(
-    circle at 0 50%,
+    circle at 0 50vh,
     var-color('changed-bg'),
     transparent
   );
