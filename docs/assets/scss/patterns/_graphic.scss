@@ -3,7 +3,10 @@
 
 .graphic {
   flex: 0 1 40em;
-  min-width: 25em;
+
+  @include above('page-break') {
+    min-width: 25em;
+  }
 
   .pencil {
     fill: var-color('background');

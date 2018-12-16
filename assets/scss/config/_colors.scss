@@ -85,8 +85,8 @@ $light-theme: (
   'action': '#_brand-blue',
   'action-hover': '#pink-dark',
   'action-bright': '#_brand-pink',
-  'graphic-light': '#blue-light',
-  'graphic-dark': '#blue-dark',
+  'graphic-glow': '#blue-light',
+  'graphic-base': '#blue-dark',
 
   'added-fg': '#added-dark',
   'added-bg': '#added-light',
@@ -116,8 +116,8 @@ $dark-theme: (
   'action': '#blue-light',
   'action-hover': '#pink-light',
   'action-bright': '#_brand-pink',
-  'graphic-light': '#pink-light',
-  'graphic-dark': '#pink-dark',
+  'graphic-glow': '#removed-dark',
+  'graphic-base': '#removed-light',
 
   'added-fg': '#added-light',
   'added-bg': '#added-dark',

@@ -3,6 +3,7 @@
   "title": "OddBooks",
   "version": "1.0.0",
   "description": "Worry-Free Writing & No-Mess Collaboration",
+  "homepage": "https://oddbooks.app",
   "main": "index.html",
   "repository": "git@github.com:oddbird/oddbooks.app.git",
   "author": {

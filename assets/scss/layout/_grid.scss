@@ -2,35 +2,48 @@
 // ====
 
 [data-layout='grid'] {
-  --margin: #{size('shim')};
+  --margin: #{size('gutter')};
   --bleed: calc(0 * 1px - var(--margin, #{size('shim')}));
   display: grid;
-  grid-gap: var(--margin);
-  grid-template: 'banner graphic' auto
-                 'main   graphic' 1fr
-                 'more   more' auto
-                 'footer nope' auto
-               / minmax(0, size('page')) minmax(0, 1fr);
+  grid-gap: size('double-gutter');
+  grid-template: 'banner' auto
+                 'main' auto
+                 'graphic' auto
+                 'more' auto
+                 'footer' auto
+               / minmax(0, size('page'));
+  justify-content: center;
   justify-items: center;
   min-height: 100vh;
   padding: var(--margin);
 
   @include above('page-break') {
-    grid-template-columns: minmax(size('page'), 1fr) minmax(0, 1fr);
-    --margin: #{size('gutter')};
+    grid-template: 'banner graphic' auto
+                   'main   graphic' 1fr
+                   'more   more' auto
+                   'footer nope' auto
+                  / minmax(size('page'), 1fr) minmax(0, 1fr);
   }
 
   @include before('') {
-    background-color: var-color('graphic-dark');
+    --position: center;
+    background-color: var-color('graphic-base');
     background-image: radial-gradient(
-      circle at 0 50vh,
-      var-color('graphic-light'),
-      var-color('graphic-dark')
+      circle at var(--position),
+      var-color('graphic-glow'),
+      var-color('graphic-base')
     );
     display: block;
-    grid-area: 1 / graphic / -1;
+    grid-area: graphic;
+    grid-gap: var(--margin);
     justify-self: stretch;
-    margin: var(--bleed) var(--bleed) var(--bleed) 0;
+    margin: 0 calc(50% - 50vw);
+
+    @include above('page-break') {
+      --position: 0 50vh;
+      grid-area: 1 / graphic / -1;
+      margin: var(--bleed) var(--bleed) var(--bleed) 0;
+    }
   }
 }
 
@@ -49,17 +62,14 @@
 [data-layout="main"] {
   align-self: center;
   grid-area: main;
-  padding: size('spacer') size('gutter') size('spacer') 0;
+
+  @include above('page-break') {
+    padding: size('spacer') 0;
+  }
 }
 
 [data-layout="more"] {
-  grid-area: more / 1;
-  padding-right: size('gutter');
-
-  @include above('page-break') {
-    grid-area: more;
-    padding-right: 0;
-  }
+  grid-area: more;
 }
 
 [data-layout="graphic"] {
@@ -67,16 +77,22 @@
   display: flex;
   grid-area: graphic;
   justify-self: start;
-  margin-left: var(--bleed);
   overflow: hidden;
-  width: calc(100% + var(--margin));
+  padding: var(--margin) 0;
+  width: 100%;
 
   @include above('page-break') {
+    margin: 0 0 0 var(--bleed);
     min-height: 90vh;
+    padding-right: var(--margin);
+    width: calc(100% + var(--margin) * 2);
   }
 }
 
 [data-layout="footer"] {
   grid-area: footer;
-  margin-top: size('spacer');
+
+  @include above('page-break') {
+    margin-top: size('spacer');
+  }
 }
