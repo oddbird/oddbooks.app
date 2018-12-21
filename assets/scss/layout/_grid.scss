@@ -20,7 +20,7 @@
 
   @include above('page-break') {
     grid-template: 'banner graphic' auto
-                   'main   graphic' minmax(70vh, auto)
+                   'main   graphic' minmax(50vh, auto)
                    'more   more' auto
                    'footer nope' auto
                   / minmax(size('page'), 1fr) minmax(0, 1fr);
