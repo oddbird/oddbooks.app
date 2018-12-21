@@ -369,29 +369,12 @@ a:hover, a:focus, a:active {
   justify-content: center;
   justify-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
   padding: var(--margin);
 }
 @media (min-width: 60em) {
   [data-layout=grid] {
-    grid-template: "banner graphic" auto "main   graphic" 1fr "more   more" auto "footer nope" auto/minmax(30rem, 1fr) minmax(0, 1fr);
-  }
-}
-[data-layout=grid]::before {
-  content: "";
-  --position: center;
-  background-color: var(--color-graphic-base, #215869);
-  background-image: radial-gradient(circle at var(--position), var(--color-graphic-glow, #49a6c5), var(--color-graphic-base, #215869));
-  display: block;
-  grid-area: graphic;
-  grid-gap: var(--margin);
-  justify-self: stretch;
-  margin: 0 calc(50% - 50vw);
-}
-@media (min-width: 60em) {
-  [data-layout=grid]::before {
-    --position: 0 50vh;
-    grid-area: 1/graphic/-1;
-    margin: var(--bleed) var(--bleed) var(--bleed) 0;
+    grid-template: "banner graphic" auto "main   graphic" minmax(70vh, auto) "more   more" auto "footer nope" auto/minmax(30rem, 1fr) minmax(0, 1fr);
   }
 }
 
@@ -422,6 +405,22 @@ a:hover, a:focus, a:active {
   grid-area: more;
 }
 
+[data-layout=dot-grid] {
+  --position: center;
+  background-color: var(--color-graphic-base, #215869);
+  background-image: radial-gradient(circle at var(--position), var(--color-graphic-glow, #49a6c5), var(--color-graphic-base, #215869));
+  grid-area: graphic;
+  justify-self: stretch;
+  margin: 0 calc(50% - 50vw);
+}
+@media (min-width: 60em) {
+  [data-layout=dot-grid] {
+    --position: 0 50vh;
+    grid-area: 1/graphic/-1;
+    margin: var(--bleed) var(--bleed) var(--bleed) 0;
+  }
+}
+
 [data-layout=graphic] {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -433,12 +432,12 @@ a:hover, a:focus, a:active {
   justify-self: start;
   overflow: hidden;
   padding: var(--margin) 0;
+  position: relative;
   width: 100%;
 }
 @media (min-width: 60em) {
   [data-layout=graphic] {
     margin: 0 0 0 var(--bleed);
-    min-height: 90vh;
     padding-right: var(--margin);
     width: calc(100% + var(--margin) * 2);
   }
@@ -589,6 +588,76 @@ label {
   padding: 0 0.8rem 0 0.4rem;
 }
 
+[data-layout=dot-grid] {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  padding-bottom: 1.6rem;
+  position: relative;
+  z-index: -1;
+}
+
+[data-dot] {
+  --delay: -25s;
+  --dot: var(--color-removed-fg, #946ca7);
+  -webkit-animation: blip 90s var(--delay, 0s) infinite ease;
+  animation: blip 90s var(--delay, 0s) infinite ease;
+  background: var(--dot);
+  fill: var(--dot);
+  opacity: 0;
+}
+[data-dot]:not(circle) {
+  height: calc(3px + 0.5vmin);
+  width: calc(3px + 0.5vmin);
+  border-radius: 100%;
+  grid-area: var(--area);
+  -webkit-transform: scale(var(--scale));
+  transform: scale(var(--scale));
+}
+
+[data-dot="1"] {
+  --delay: -10s;
+  --dot: var(--color-removed-bg, #d0b9da);
+}
+
+[data-dot="2"] {
+  --delay: -27s;
+  --dot: var(--color-changed-bg, #e0f7ff);
+}
+
+[data-dot="3"] {
+  --delay: -27s;
+  --dot: var(--color-changed-fg, #3e6a79);
+}
+
+[data-dot="4"] {
+  --delay: -14s;
+}
+
+[data-dot="5"] {
+  --delay: -10s;
+  --dot: var(--color-added-bg, #d8eedb);
+}
+
+@-webkit-keyframes blip {
+  12%, 37%, 95% {
+    opacity: 0;
+  }
+  21%, 40%, 63% {
+    opacity: 1;
+  }
+}
+
+@keyframes blip {
+  12%, 37%, 95% {
+    opacity: 0;
+  }
+  21%, 40%, 63% {
+    opacity: 1;
+  }
+}
 .graphic {
   -webkit-box-flex: 0;
   -ms-flex: 0 1 40em;
@@ -610,15 +679,6 @@ label {
 .graphic .text {
   opacity: 0.4;
   fill: var(--color-border-light, #a3a4a6);
-}
-.graphic .dot-1 {
-  fill: var(--color-removed-fg, #946ca7);
-}
-.graphic .dot-2 {
-  fill: var(--color-changed-bg, #e0f7ff);
-}
-.graphic .dot-3 {
-  fill: var(--color-added-fg, #3d6644);
 }
 .graphic .diff-ins {
   fill: var(--color-added-bg, #d8eedb);

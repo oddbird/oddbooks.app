@@ -2,20 +2,20 @@
 	xmlns="http://www.w3.org/2000/svg"
 	viewBox="0 0 617 497">
 <g id="dots">
-	<circle class="dot-1" cx="130" cy="64.5" r="4.5"/>
-	<circle class="dot-1" cx="188" cy="414.5" r="4.5"/>
-	<circle class="dot-1" cx="344" cy="491.5" r="3.5"/>
-	<circle class="dot-1" cx="214" cy="48.5" r="1.5"/>
-	<circle class="dot-1" cx="307" cy="3.5" r="1.5"/>
-	<circle class="dot-2" cx="351" cy="34.5" r="2.5"/>
-	<circle class="dot-2" cx="431" cy="460.5" r="3.5"/>
-	<circle class="dot-2" cx="109" cy="387.5" r="3.5"/>
-	<circle class="dot-3" cx="290" cy="399.5" r="2"/>
-	<circle class="dot-3" cx="159" cy="437.5" r="2"/>
-	<circle class="dot-2" cx="302.5" cy="476" r="2"/>
-	<circle class="dot-3" cx="186" cy="346.5" r="2"/>
-	<circle class="dot-2" cx="372" cy="411.5" r="1"/>
-	<circle class="dot-3" cx="159" cy="437.5" r="2"/>
+	<circle data-dot="1" cx="130" cy="64.5" r="4.5"/>
+	<circle data-dot="1" cx="188" cy="414.5" r="4.5"/>
+	<circle data-dot="1" cx="344" cy="491.5" r="3.5"/>
+	<circle data-dot="1" cx="214" cy="48.5" r="1.5"/>
+	<circle data-dot="1" cx="307" cy="3.5" r="1.5"/>
+	<circle data-dot="2" cx="351" cy="34.5" r="2.5"/>
+	<circle data-dot="2" cx="431" cy="460.5" r="3.5"/>
+	<circle data-dot="2" cx="109" cy="387.5" r="3.5"/>
+	<circle data-dot="3" cx="290" cy="399.5" r="2"/>
+	<circle data-dot="3" cx="159" cy="437.5" r="2"/>
+	<circle data-dot="2" cx="302.5" cy="476" r="2"/>
+	<circle data-dot="3" cx="186" cy="346.5" r="2"/>
+	<circle data-dot="2" cx="372" cy="411.5" r="1"/>
+	<circle data-dot="3" cx="159" cy="437.5" r="2"/>
 </g>
 <g class="pencil">
 	<path id="body" d="M586.12,371.03c0.11-0.65-0.57-0.35-0.74-0.11c-0.03,0.05-0.01,0.15-0.04,0.2c-0.12,0.28-0.12,0.68-0.17,0.98
