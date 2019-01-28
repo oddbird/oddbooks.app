@@ -34,9 +34,9 @@
 
 		{% block extra %}{% endblock %}
 
-		<aside data-layout="graphic" role="presentation">
+		<div data-layout="graphic" role="presentation">
 			{% include "site/graphic.svg" %}
-		</aside>
+		</div>
 
 		<footer data-layout="footer">
 			© {% getDate 'year' %}
@@ -48,6 +48,17 @@
 				invert
 			</button>
 		</footer>
+
+		<div data-layout="dot-grid" role="presentation">
+			{% for i in range(1, 25) -%}
+				{% set col = range(1, 80)|random %}
+				{% set row = range(1, 40)|random %}
+				{% set scale = range(1, 25)|random / 10 %}
+				{% set delay = 0 - range(1, 90)|random %}
+				<span data-dot="{{ range(0, 5)|random }}"
+					style="--area: {{ col }} / {{ row }}; --scale: {{ scale }}; --delay: {{ delay }}s;"></span>
+			{%- endfor %}
+		</div>
 
 		<!-- Current page: {{ page.url | url }} -->
 

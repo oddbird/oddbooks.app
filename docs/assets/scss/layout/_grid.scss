@@ -15,35 +15,15 @@
   justify-content: center;
   justify-items: center;
   min-height: 100vh;
+  overflow-x: hidden;
   padding: var(--margin);
 
   @include above('page-break') {
     grid-template: 'banner graphic' auto
-                   'main   graphic' 1fr
+                   'main   graphic' auto
                    'more   more' auto
                    'footer nope' auto
                   / minmax(size('page'), 1fr) minmax(0, 1fr);
-  }
-
-  @include before('') {
-    --position: center;
-    background-color: var-color('graphic-base');
-    background-image: radial-gradient(
-      circle at var(--position),
-      var-color('graphic-glow'),
-      var-color('graphic-base')
-    );
-    display: block;
-    grid-area: graphic;
-    grid-gap: var(--margin);
-    justify-self: stretch;
-    margin: 0 calc(50% - 50vw);
-
-    @include above('page-break') {
-      --position: 0 50vh;
-      grid-area: 1 / graphic / -1;
-      margin: var(--bleed) var(--bleed) var(--bleed) 0;
-    }
   }
 }
 
@@ -72,6 +52,25 @@
   grid-area: more;
 }
 
+[data-layout='dot-grid'] {
+  --position: center;
+  background-color: var-color('graphic-base');
+  background-image: radial-gradient(
+    circle at var(--position),
+    var-color('graphic-glow'),
+    var-color('graphic-base')
+  );
+  grid-area: graphic;
+  justify-self: stretch;
+  margin: 0 calc(50% - 50vw);
+
+  @include above('page-break') {
+    --position: 0 50vh;
+    grid-area: 1 / graphic / -1;
+    margin: var(--bleed) var(--bleed) var(--bleed) 0;
+  }
+}
+
 [data-layout="graphic"] {
   align-items: center;
   display: flex;
@@ -79,11 +78,11 @@
   justify-self: start;
   overflow: hidden;
   padding: var(--margin) 0;
+  position: relative;
   width: 100%;
 
   @include above('page-break') {
     margin: 0 0 0 var(--bleed);
-    min-height: 90vh;
     padding-right: var(--margin);
     width: calc(100% + var(--margin) * 2);
   }

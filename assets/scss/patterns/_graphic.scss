@@ -23,18 +23,6 @@
     fill: var-color('border-light');
   }
 
-	.dot-1{
-    fill: var-color('removed-fg');
-  }
-
-	.dot-2{
-    fill: var-color('changed-bg');
-  }
-
-	.dot-3{
-    fill: var-color('added-fg');
-  }
-
 	.diff-ins{
     fill: var-color('added-bg');
   }
@@ -54,5 +42,4 @@
 	.tiptext{
     fill: var-contrast('action-bright');
   }
-
 }

@@ -1,0 +1,69 @@
+// Dots
+// ====
+
+[data-layout='dot-grid'] {
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  padding-bottom: size('gutter');
+  position: relative;
+  z-index: -1;
+}
+
+[data-dot] {
+  --delay: #{random(90) * -1s};
+  --dot: #{var-color('removed-fg')};
+  animation: blip 90s var(--delay, 0s) infinite ease;
+  background: var(--dot);
+  fill: var(--dot);
+  opacity: 0;
+
+  &:not(circle) {
+    @include square(calc(3px + 0.5vmin));
+    border-radius: 100%;
+    grid-area: var(--area);
+    transform: scale(var(--scale));
+  }
+}
+
+[data-dot='1'] {
+  --delay: #{random(30) * -1s};
+  --dot: #{var-color('removed-bg')};
+}
+
+[data-dot='2'] {
+  --delay: #{random(30) * -1s};
+  --dot: #{var-color('changed-bg')};
+}
+
+[data-dot='3'] {
+  --delay: #{random(30) * -1s};
+  --dot: #{var-color('changed-fg')};
+}
+
+[data-dot='4'] {
+  --delay: #{random(30) * -1s};
+}
+
+[data-dot='5'] {
+  --delay: #{random(30) * -1s};
+  --dot: #{var-color('added-bg')};
+}
+
+
+// Blip
+// ----
+
+@keyframes blip {
+  12%,
+  37%,
+  95% {
+    opacity: 0;
+  }
+
+  21%,
+  40%,
+  63% {
+    opacity: 1;
+  }
+}
