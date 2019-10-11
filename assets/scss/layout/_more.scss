@@ -4,20 +4,9 @@
 [data-layout='more'] {
   @include above('page-break') {
     display: grid;
-    grid-template-columns:
-      [three-start] 1fr
-      [two-start] calc(var(--margin) * 3)
-      [three-end] 1fr
-      [one-start] calc(var(--margin) * 3)
-      [two-end] 1fr
-      [one-end];
-    grid-template-rows:
-      [one-start] auto
-      [two-start] size('shim', 'px')
-      [one-end] auto
-      [three-start] size('shim', 'px')
-      [two-end] auto
-      [three-end];
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: size('gutter');
     max-width: size('page', ('times': 2.5));
   }
 }
@@ -25,8 +14,8 @@
 .more {
   background-color: var-color('background');
   background-clip: padding-box;
-  border: size('shim', 'px') solid transparent;
-  border-width: size('shim', 'px') 0;
+  border: size('half-shim', 'px') solid transparent;
+  border-width: size('half-shim', 'px') 0;
 
   @include above('page-break') {
     padding: var(--margin) calc(var(--margin) * 1.5);
@@ -36,24 +25,32 @@
       margin: 0;
     }
 
+    img {
+      margin-top: size('shim');
+    }
+
     &:nth-child(1) {
       border-bottom-color: var-color('removed-fg');
       border-top-color: var-color('removed-bg');
-      grid-area: one;
+      border-width: size('half-shim', 'px');
     }
 
     &:nth-child(2) {
-      border-bottom-color: var-color('removed-fg');
+      border-bottom-color: var-color('removed-bg');
       border-top-color: var-color('removed-fg');
-      border-width: size('shim', 'px');
-      grid-area: two;
-      margin: 0 var(--margin);
+      border-width: size('half-shim', 'px');
     }
 
     &:nth-child(3) {
+      border-bottom-color: var-color('removed-fg');
+      border-top-color: var-color('removed-bg');
+      border-width: size('half-shim', 'px');
+    }
+
+    &:nth-child(4) {
       border-bottom-color: var-color('removed-bg');
       border-top-color: var-color('removed-fg');
-      grid-area: three;
+      border-width: size('half-shim', 'px');
     }
   }
 }
