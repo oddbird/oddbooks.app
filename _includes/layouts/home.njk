@@ -6,6 +6,9 @@
       <section class="more">
         <h3>{{ item.title | md('inline') | safe }}</h3>
         {{ item.text | md | safe }}
+        <div class="embed-container">
+          <iframe src="{{ item.videourl }}" frameborder="0" allowfullscreen></iframe>
+        </div>
       </section>
     {% endfor %}
   </div>
