@@ -6,6 +6,7 @@
       <section class="more">
         <h3>{{ item.title | md('inline') | safe }}</h3>
         {{ item.text | md | safe }}
+        <img src="/assets/images/{{ item.image }}.gif" alt="{{ item.imagealt }}">
       </section>
     {% endfor %}
   </div>
